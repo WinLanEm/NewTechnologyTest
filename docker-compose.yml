@@ -37,7 +37,7 @@ services:
         image: postgres:latest
         restart: always
         volumes:
-            - ./tmp/db:/var/lib/postgresql/data
+            - pgdata:/var/lib/postgresql/data
         environment:
             POSTGRES_DB: project_dev
             POSTGRES_USER: root
@@ -62,3 +62,5 @@ services:
         networks:
             - app-network
 
+volumes:
+    pgdata:

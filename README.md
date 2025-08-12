@@ -34,3 +34,18 @@ php artisan app:parse-top-category-positions --first-run
 В случае ошибок запроса к внешнему API, они сохраняются с деталями (исключения, параметры, stacktrace).
 
 Спасибо за предоставленную задачу, жду обратной связи :)
+
+5 Развертывание:
+
+docker-compose build
+composer install
+
+sudo chown -R www-data:www-data storage bootstrap/cache
+sudo chmod -R 775 storage bootstrap/cache
+
+docker-compose up -d
+docker exec -it project_app bash
+
+cp .env.example .env
+php artisan migrate
+php artisan app:parse-top-category-positions --first-run
